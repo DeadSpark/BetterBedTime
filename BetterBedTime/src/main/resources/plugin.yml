@@ -1,0 +1,9 @@
+name: BetterBedTime
+version: ${project.version}
+main: me.deadspark.plugin.betterbedtime.BetterBedTime
+authors: [DeadSpark]
+description: A Plugin adding more features to a bed
+website: https://deadspark.github.io/MysticalCrafts/
+commands:
+  bbt:
+    description: Information about plugin.

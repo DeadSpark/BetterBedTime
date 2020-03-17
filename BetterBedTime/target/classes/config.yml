@@ -1,0 +1,69 @@
+# Configuration version SNAPSHOT-1.0
+
+# Custom Message that will be typed when player goes to bed
+# Supports '&" color codes
+bedentermessage: '&2Hey, &aYou are going to sleep?'
+
+# Custom Message that will be typed when player gets off the bed
+# [Note] The message will be sent even when players leave the bed before it turns to Day
+# So adding "GoodMorning" in the message will sometimes make no sense as player will get the message
+# Even if they leave the bed at night itself
+# Supports '&" color codes
+bedleavemessage: '&2Hey, &aDid you sleep well?'
+
+
+# To-Do list in Configuration file
+
+# • Add custom effects on Bed Leave/Enter
+# • Toggle the effects (The effects for specific player can be toggled with help of permission nodes provided)
+# • Add custom time for each and every effect
+# • Make effects time configurable
+# • Add Player display name variables to be used in custom messages eg. {nick}
+
+# Join our Discord server for further updates https://discord.gg/2trEDcM
+# Visit out GitHub page for more info and social links https://deadspark.github.io/MysticalCrafts/
+
+
+
+# New Configuration file example
+
+# [Note] Please don't change anything below
+# It might cause the plugin to crash and is just a example config of our further updates
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+# Configuration version SNAPSHOT-1.1
+
+# Custom Message that will be typed when player goes to bed
+# Supports '&" color codes
+#bedentermessage: '&2Hey, &aYou are going to sleep?'
+
+# Custom Message that will be typed when player gets off the bed
+# [Note] The message will be sent even when players leave the bed before it turns to Day
+# So adding "GoodMorning" in the message will sometimes make no sense as player will get the message
+# Even if they leave the bed at night itself
+# Supports '&" color codes
+#bedleavemessage: '&2Hey, &aDid you sleep well?'
+
+# Add custom effects on player Bed Enter/Leave
+# Change the following values to true or false to enable disable
+
+#PlayerBedEnterEffects:
+
+#regeneration: true
+#time: 100 #Enter game ticks value 20 ticks = 1 second
+
+#speed: true
+#time: 100 #Enter game ticks value 20 ticks = 1 second
+
+
+#PlayerBedLeaveEffects:
+
+#regeneration: true
+#time: 100 #Enter game ticks value 20 ticks = 1 second
+
+#speed: true
+#time: 100 #Enter game ticks value 20 ticks = 1 second
+
+# ----------------------------------------------------------------------------------------------------------------------
