@@ -19,7 +19,6 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
 
-        // Plugin startup logic
         getLogger().info("BetterBedTime Plugin By DeadSpark");
         getLogger().info("BetterBedTime Plugin version SNAPSHOT-1.0 has been Enabled");
         getServer().getPluginManager().registerEvents(this, this);
@@ -31,8 +30,7 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
 
-        // Plugin shutdown logic
-        getLogger().info("BetterBedTime Plugin version SNAPSHOT-1.0 has been Enabled");
+        getLogger().info("BetterBedTime Plugin version SNAPSHOT-1.0 has been Disabled");
 
     }
 
