@@ -16,7 +16,6 @@ import java.util.Objects;
 
 public final class BetterBedTime extends JavaPlugin implements Listener {
 
-    @Override
     public void onEnable() {
 
         getLogger().info("BetterBedTime Plugin By DeadSpark");
@@ -27,7 +26,6 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
     }
 
-    @Override
     public void onDisable() {
 
         getLogger().info("BetterBedTime Plugin version SNAPSHOT-1.0 has been Disabled");
@@ -38,10 +36,11 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
     public void OnBedEnter(PlayerBedEnterEvent event) {
 
         Player player = event.getPlayer();
-
         if (player.hasPermission("betterbedtime.enterbedmsg")) {
 
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(getConfig().getString("bedentermessage"))));
+            String bedentermsg = getConfig().getString("bedentermessage");
+            assert bedentermsg != null;
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', bedentermsg));
 
         }
 
@@ -51,6 +50,13 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
     public void OnBedExit(PlayerBedLeaveEvent event) {
 
         Player player = event.getPlayer();
+        if (player.hasPermission("betterbedtime.bedleavemsg")) {
+
+            String bedleavemsg = getConfig().getString("bedleavemessage");
+            assert bedleavemsg != null;
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', bedleavemsg));
+
+        }
 
         if (player.hasPermission("betterbedtime.heal")) {
 
@@ -58,27 +64,42 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
         }
 
-        if(player.hasPermission("betterbedtime.feed")) {
+        if (player.hasPermission("betterbedtime.feed")) {
 
             player.setFoodLevel(20);
 
         }
 
-        if (player.hasPermission("betterbedtime.effectspeed")) {
+        if (Objects.equals(getConfig().getString("absorption"), "true")) {
 
-            player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 400, 2));
+            if (player.hasPermission("betterbedtime.effectabsorption")) {
+
+                int absorptiondelay = getConfig().getInt("absorptiontime");
+                player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, absorptiondelay, 3));
+
+            }
 
         }
 
-        if(player.hasPermission("betterbedtime.effectregen")) {
+        if (Objects.equals(getConfig().getString("badluck"), "true")) {
 
-            player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 400, 2));
+            if (player.hasPermission("betterbedtime.effectbadluck")) {
+
+                int badluckdelay = getConfig().getInt("badlucktime");
+                player.addPotionEffect(new PotionEffect(PotionEffectType.UNLUCK, badluckdelay, 2));
+
+            }
 
         }
 
-        if (player.hasPermission("betterbedtime.bedleavemsg")) {
+        if (Objects.equals(getConfig().getString("badomen"), "true")) {
 
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(getConfig().getString("bedleavemessage"))));
+            if (player.hasPermission("betterbedtime.effectbadome")) {
+
+                int badomendelay = getConfig().getInt("badomentime");
+                player.addPotionEffect(new PotionEffect(PotionEffectType.BAD_OMEN, badomendelay, 2));
+
+            }
 
         }
 
@@ -87,7 +108,7 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (command.getName().equals("bbt")){
+        if (command.getName().equals("bbt")) {
 
             Player player = (Player) sender;
             player.sendMessage(ChatColor.BLACK + "--------------------------------------------------");
@@ -96,9 +117,8 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
             player.sendMessage(ChatColor.GREEN + "https://deadspark.github.io/MysticalCrafts");
             player.sendMessage(ChatColor.BLACK + "--------------------------------------------------");
 
-        }
+        }return false;
 
-        return false;
     }
-    
+
 }
