@@ -1,4 +1,4 @@
-# Configuration version 1.2
+# Configuration version 1.3
 
 # Custom Message that will be typed when player goes to bed
 # Supports '&" color codes
@@ -16,14 +16,95 @@ bedleavemessage: '&2Hey, &aDid you sleep well?'
 # Change the following values to true or false to enable disable
 PlayerBedEnterEffects:
 
-absorption: true
+absorption: false
 absorptiontime: 200 #Enter game ticks value 20 ticks = 1 second
 
-badluck: true
+badluck: false
 badlucktime: 200 #Enter game ticks value 20 ticks = 1 second
 
-badomen: true
+badomen: false
 badomentime: 200 #Enter game ticks value 20 ticks = 1 second
+
+blindness: false
+blindnesstime: 200 #Enter game ticks value 20 ticks = 1 second
+
+conduitpower: false
+conduitpowertime: 200 #Enter game ticks value 20 ticks = 1 second
+
+dolphinsgrace: false
+dolphinsgracetime: 200 #Enter game ticks value 20 ticks = 1 second
+
+fireresistance: false
+fireresistancetime: 200 #Enter game ticks value 20 ticks = 1 second
+
+glowing: false
+glowingtime: 200 #Enter game ticks value 20 ticks = 1 second
+
+haste: false
+hastetime: 200 #Enter game ticks value 20 ticks = 1 second
+
+healthboost: false
+healthboosttime: 200 #Enter game ticks value 20 ticks = 1 second
+
+heroofthevillage: false
+heroofthevillagetime: 200 #Enter game ticks value 20 ticks = 1 second
+
+hunger: false
+hungertime: 200 #Enter game ticks value 20 ticks = 1 second
+
+instantdamage: false
+instantdamagetime: 200 #Enter game ticks value 20 ticks = 1 second
+
+instanthealth: false
+instanthealthtime: 200 #Enter game ticks value 20 ticks = 1 second
+
+invisibility: false
+invisibilitytime: 200 #Enter game ticks value 20 ticks = 1 second
+
+jumpboost: false
+jumpboosttime: 200 #Enter game ticks value 20 ticks = 1 second
+
+levitation: false
+levitationtime: 200 #Enter game ticks value 20 ticks = 1 second
+
+luck: false
+lucktime: 200 #Enter game ticks value 20 ticks = 1 second
+
+miningfatigue: false
+miningfatiguetime: 200 #Enter game ticks value 20 ticks = 1 second
+
+nausea: false
+nauseatime: 200 #Enter game ticks value 20 ticks = 1 second
+
+nightvision: false
+nightvisiontime: 200 #Enter game ticks value 20 ticks = 1 second
+
+poison: false
+poisontime: 200 #Enter game ticks value 20 ticks = 1 second
+
+regeneration: false
+regenerationtime: 200 #Enter game ticks value 20 ticks = 1 second
+
+resistance: false
+resistancetime: 200 #Enter game ticks value 20 ticks = 1 second
+
+saturation: false
+saturationtime: 200 #Enter game ticks value 20 ticks = 1 second
+
+slowfalling: false
+slowfallingtime: 200 #Enter game ticks value 20 ticks = 1 second
+
+slowness: false
+slownesstime: 200 #Enter game ticks value 20 ticks = 1 second
+
+speed: false
+speedtime: 200 #Enter game ticks value 20 ticks = 1 second
+
+waterbreathing: false
+waterbreathingtime: 200 #Enter game ticks value 20 ticks = 1 second
+
+weakness: false
+weaknesstime: 200 #Enter game ticks value 20 ticks = 1 second
 
 # To-Do list in Configuration file
 
@@ -33,6 +114,7 @@ badomentime: 200 #Enter game ticks value 20 ticks = 1 second
 # • Add Player display name variables to be used in custom messages eg. {nick}
 # • Add a command to see percentage of players sleeping in specific world
 # • Make effects amplifier configurable
+# • Add one player sleep concept which can be toggled in config.yml
 
 # Join our Discord server for further updates https://discord.gg/2trEDcM
 # Visit out GitHub page for more info and social links https://deadspark.github.io/MysticalCrafts/
