@@ -19,7 +19,7 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
     public void onEnable() {
 
         getLogger().info("BetterBedTime Plugin By DeadSpark");
-        getLogger().info("BetterBedTime Plugin version 1.3 has been Enabled");
+        getLogger().info("BetterBedTime Plugin version 1.4 has been Enabled");
         getServer().getPluginManager().registerEvents(this, this);
         getConfig().options().copyDefaults();
         saveDefaultConfig();
@@ -28,7 +28,7 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
     public void onDisable() {
 
-        getLogger().info("BetterBedTime Plugin version 1.3 has been Disabled");
+        getLogger().info("BetterBedTime Plugin version 1.4 has been Disabled");
 
     }
 
@@ -406,16 +406,64 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (command.getName().equals("bbt")) {
+        if (sender instanceof Player) {
 
-            Player player = (Player) sender;
-            player.sendMessage(ChatColor.BLACK + "--------------------------------------------------");
-            player.sendMessage(ChatColor.GREEN + "BetterBedTime Plugin By DeadSpark");
-            player.sendMessage(ChatColor.GREEN + "Check out our GitHub Page");
-            player.sendMessage(ChatColor.GREEN + "https://deadspark.github.io/MysticalCrafts");
-            player.sendMessage(ChatColor.BLACK + "--------------------------------------------------");
+            if (command.getName().equalsIgnoreCase("bbt")) {
 
-        }return false;
+                Player player = (Player) sender;
+                if (args.length > 0) {
+
+                    if (args[0].equalsIgnoreCase("reload")) {
+
+                        reloadConfig();
+                        player.sendMessage("All config files have been reloaded");
+
+                    }
+
+                }else {
+
+                    player.sendMessage(ChatColor.BLACK + "--------------------------------------------------");
+                    player.sendMessage(ChatColor.GREEN + "BetterBedTime Plugin By " + ChatColor.YELLOW + "DeadSpark");
+                    player.sendMessage(ChatColor.BLUE + "Check out our GitHub Page");
+                    player.sendMessage(ChatColor.GREEN + "https://deadspark.github.io/MysticalCrafts");
+                    player.sendMessage(ChatColor.BLUE + "Video Preview");
+                    player.sendMessage(ChatColor.GREEN + "https://youtu.be/Wl8mWQsng3M");
+                    player.sendMessage(ChatColor.BLACK + "--------------------------------------------------");
+
+                }
+
+            }
+
+        }else {
+
+            if (command.getName().equalsIgnoreCase("bbt")) {
+
+                if (args.length > 0) {
+
+                    if (args[0].equalsIgnoreCase("reload")) {
+
+                        reloadConfig();
+                        getLogger().info("All config files have been reloaded");
+
+                    }
+
+                }else {
+
+                    getLogger().info("--------------------------------------------------");
+                    getLogger().info("BetterBedTime Plugin By DeadSpark");
+                    getLogger().info("Check out our GitHub Page");
+                    getLogger().info("https://deadspark.github.io/MysticalCrafts");
+                    getLogger().info("Video Preview");
+                    getLogger().info("https://youtu.be/Wl8mWQsng3M");
+                    getLogger().info("--------------------------------------------------");
+
+                }
+
+            }
+
+        }
+
+        return false;
 
     }
 
