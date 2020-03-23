@@ -1,15 +1,15 @@
-# Configuration version 1.4
+Configuration Version: 1.5
 
 # Custom Message that will be typed when player goes to bed
 # Supports '&" color codes
-bedentermessage: '&2Hey, &aYou are going to sleep?'
+bedentermessage: '&2Hey {nick}, &aAre you going to sleep?'
 
 # Custom Message that will be typed when player gets off the bed
 # [Note] The message will be sent even when players leave the bed before it turns to Day
 # So adding "GoodMorning" in the message will sometimes make no sense as player will get the message
 # Even if they leave the bed at night itself
 # Supports '&" color codes
-bedleavemessage: '&2Hey, &aDid you sleep well?'
+bedleavemessage: '&2Hey {nick}, &aDid you sleep well?'
 
 
 # Add custom effects on player Bed Enter/Leave
@@ -18,102 +18,131 @@ PlayerBedEnterEffects:
 
 absorption: false
 absorptiontime: 200 #Enter game ticks value 20 ticks = 1 second
+absorptionamp: 2 #Configure the amplifier(level) of the effects
 
 badluck: false
 badlucktime: 200 #Enter game ticks value 20 ticks = 1 second
+badluckamp: 2 #Configure the amplifier(level) of the effects
 
 badomen: false
 badomentime: 200 #Enter game ticks value 20 ticks = 1 second
+badomenamp: 2 #Configure the amplifier(level) of the effects
 
 blindness: false
 blindnesstime: 200 #Enter game ticks value 20 ticks = 1 second
+blindnessamp: 2 #Configure the amplifier(level) of the effects
 
 conduitpower: false
 conduitpowertime: 200 #Enter game ticks value 20 ticks = 1 second
+conduitpoweramp: 2 #Configure the amplifier(level) of the effects
 
 dolphinsgrace: false
 dolphinsgracetime: 200 #Enter game ticks value 20 ticks = 1 second
+dolphinsgraceamp: 2 #Configure the amplifier(level) of the effects
 
 fireresistance: false
 fireresistancetime: 200 #Enter game ticks value 20 ticks = 1 second
+fireresistanceamp: 2 #Configure the amplifier(level) of the effects
 
 glowing: false
 glowingtime: 200 #Enter game ticks value 20 ticks = 1 second
+glowingamp: 2 #Configure the amplifier(level) of the effects
 
 haste: false
 hastetime: 200 #Enter game ticks value 20 ticks = 1 second
+hasteamp: 2 #Configure the amplifier(level) of the effects
 
 healthboost: false
 healthboosttime: 200 #Enter game ticks value 20 ticks = 1 second
+healthboostamp: 2 #Configure the amplifier(level) of the effects
 
 heroofthevillage: false
 heroofthevillagetime: 200 #Enter game ticks value 20 ticks = 1 second
+heroofthevillageamp: 2 #Configure the amplifier(level) of the effects
 
 hunger: false
 hungertime: 200 #Enter game ticks value 20 ticks = 1 second
+hungeramp: 2 #Configure the amplifier(level) of the effects
 
 instantdamage: false
 instantdamagetime: 200 #Enter game ticks value 20 ticks = 1 second
+instantdamageamp: 2 #Configure the amplifier(level) of the effects
 
 instanthealth: false
 instanthealthtime: 200 #Enter game ticks value 20 ticks = 1 second
+instanthealthamp: 2 #Configure the amplifier(level) of the effects
 
 invisibility: false
 invisibilitytime: 200 #Enter game ticks value 20 ticks = 1 second
+invisibilityamp: 2 #Configure the amplifier(level) of the effects
 
 jumpboost: false
 jumpboosttime: 200 #Enter game ticks value 20 ticks = 1 second
+jumpboostamp: 2 #Configure the amplifier(level) of the effects
 
 levitation: false
 levitationtime: 200 #Enter game ticks value 20 ticks = 1 second
+levitationamp: 2 #Configure the amplifier(level) of the effects
 
 luck: false
 lucktime: 200 #Enter game ticks value 20 ticks = 1 second
+luckamp: 2 #Configure the amplifier(level) of the effects
 
 miningfatigue: false
 miningfatiguetime: 200 #Enter game ticks value 20 ticks = 1 second
+miningfatigueamp: 2 #Configure the amplifier(level) of the effects
 
 nausea: false
 nauseatime: 200 #Enter game ticks value 20 ticks = 1 second
+nauseaamp: 2 #Configure the amplifier(level) of the effects
 
 nightvision: false
 nightvisiontime: 200 #Enter game ticks value 20 ticks = 1 second
+nightvisionamp: 2 #Configure the amplifier(level) of the effects
 
 poison: false
 poisontime: 200 #Enter game ticks value 20 ticks = 1 second
+poisonamp: 2 #Configure the amplifier(level) of the effects
 
 regeneration: false
 regenerationtime: 200 #Enter game ticks value 20 ticks = 1 second
+regenerationamp: 2 #Configure the amplifier(level) of the effects
 
 resistance: false
 resistancetime: 200 #Enter game ticks value 20 ticks = 1 second
+resistanceamp: 2 #Configure the amplifier(level) of the effects
 
 saturation: false
 saturationtime: 200 #Enter game ticks value 20 ticks = 1 second
+saturationamp: 2 #Configure the amplifier(level) of the effects
 
 slowfalling: false
 slowfallingtime: 200 #Enter game ticks value 20 ticks = 1 second
+slowfallingamp: #Configure the amplifier(level) of the effects
 
 slowness: false
 slownesstime: 200 #Enter game ticks value 20 ticks = 1 second
+slownessamp: 2 #Configure the amplifier(level) of the effects
 
 speed: false
 speedtime: 200 #Enter game ticks value 20 ticks = 1 second
+speedamp: 2 #Configure the amplifier(level) of the effects
 
 waterbreathing: false
 waterbreathingtime: 200 #Enter game ticks value 20 ticks = 1 second
+waterbreathingamp: 2 #Configure the amplifier(level) of the effects
 
 weakness: false
 weaknesstime: 200 #Enter game ticks value 20 ticks = 1 second
+weaknessamp: 2 #Configure the amplifier(level) of the effects
 
 # To-Do list in Configuration file
 
 # • Add custom effects on Bed Leave/Enter - COMPLETED
 # • Toggle the effects (The effects for specific player can be toggled with help of permission nodes provided) - COMPLETED
 # • Add custom time for each and every effect - COMPLETED
-# • Add Player display name variables to be used in custom messages eg. {nick}
-# • Add a command to see percentage of players sleeping in specific world
-# • Make effects amplifier configurable
+# • Add Player display name variables to be used in custom messages eg. {nick} - COMPLETED
+# • Make effects amplifier configurable - COMPLETED
 # • Add one player sleep concept which can be toggled in config.yml
 
 # Join our Discord server for further updates https://discord.gg/2trEDcM
