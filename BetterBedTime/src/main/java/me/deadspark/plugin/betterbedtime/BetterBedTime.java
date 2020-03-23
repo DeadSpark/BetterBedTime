@@ -19,7 +19,7 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
     public void onEnable() {
 
         getLogger().info("BetterBedTime Plugin By DeadSpark");
-        getLogger().info("BetterBedTime Plugin version 1.4 has been Enabled");
+        getLogger().info("BetterBedTime Plugin version 1.5 has been Enabled");
         getServer().getPluginManager().registerEvents(this, this);
         getConfig().options().copyDefaults();
         saveDefaultConfig();
@@ -28,7 +28,7 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
     public void onDisable() {
 
-        getLogger().info("BetterBedTime Plugin version 1.4 has been Disabled");
+        getLogger().info("BetterBedTime Plugin version 1.5 has been Disabled");
 
     }
 
@@ -38,8 +38,7 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
         if (player.hasPermission("betterbedtime.enterbedmsg")) {
 
-            String bedentermsg = getConfig().getString("bedentermessage");
-            assert bedentermsg != null;
+            String bedentermsg = Objects.requireNonNull(getConfig().getString("bedentermessage")).replace("{nick}", player.getDisplayName());
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', bedentermsg));
 
         }
@@ -52,9 +51,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
         if (player.hasPermission("betterbedtime.bedleavemsg")) {
 
-            String bedleavemsg = getConfig().getString("bedleavemessage");
-            assert bedleavemsg != null;
+            String bedleavemsg = Objects.requireNonNull(getConfig().getString("bedleavemessage")).replace("{nick}", player.getDisplayName());
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', bedleavemsg));
+
 
         }
 
@@ -74,8 +73,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectabsorption")) {
 
+                int absorptionlvl = getConfig().getInt("absorptionamp");
                 int absorptiondelay = getConfig().getInt("absorptiontime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, absorptiondelay, 3));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, absorptiondelay, absorptionlvl));
 
             }
 
@@ -85,8 +85,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectbadluck")) {
 
+                int badlucklvl = getConfig().getInt("badluckamp");
                 int badluckdelay = getConfig().getInt("badlucktime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.UNLUCK, badluckdelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.UNLUCK, badluckdelay, badlucklvl));
 
             }
 
@@ -96,8 +97,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectbadomen")) {
 
+                int badomenlvl = getConfig().getInt("badomenamp");
                 int badomendelay = getConfig().getInt("badomentime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.BAD_OMEN, badomendelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.BAD_OMEN, badomendelay, badomenlvl));
 
             }
 
@@ -107,8 +109,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectblindness")) {
 
+                int blindnesslvl = getConfig().getInt("blindnessamp");
                 int blindnessdelay = getConfig().getInt("blindnesstime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, blindnessdelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, blindnessdelay, blindnesslvl));
 
             }
 
@@ -118,8 +121,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectconduitpower")) {
 
+                int conduitpowerlvl = getConfig().getInt("conduitpoweramp");
                 int conduitpowerdelay = getConfig().getInt("conduitpowertime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.CONDUIT_POWER, conduitpowerdelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.CONDUIT_POWER, conduitpowerdelay, conduitpowerlvl));
 
             }
 
@@ -129,8 +133,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectdolphinsgrace")) {
 
+                int dolphinsgracelvl = getConfig().getInt("dolphinsgraceamp");
                 int dolphinsgracedelay = getConfig().getInt("dolphinsgracetime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, dolphinsgracedelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, dolphinsgracedelay, dolphinsgracelvl));
 
             }
 
@@ -140,8 +145,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectfireresistance")) {
 
+                int fireresistancelvl = getConfig().getInt("fireresistanceamp");
                 int fireresistancedelay = getConfig().getInt("fireresistancetime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, fireresistancedelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, fireresistancedelay, fireresistancelvl));
 
             }
 
@@ -151,8 +157,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectglowing")) {
 
+                int glowinglvl = getConfig().getInt("glowingamp");
                 int glowingdelay = getConfig().getInt("glowingtime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, glowingdelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, glowingdelay, glowinglvl));
 
             }
 
@@ -162,8 +169,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effecthaste")) {
 
+                int hastelvl = getConfig().getInt("hasteamp");
                 int hastedelay = getConfig().getInt("hastetime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, hastedelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, hastedelay, hastelvl));
 
             }
 
@@ -173,8 +181,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effecthealthboost")) {
 
+                int healthboostlvl = getConfig().getInt("healthboostamp");
                 int healthboostdelay = getConfig().getInt("healthboosttime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, healthboostdelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, healthboostdelay, healthboostlvl));
 
             }
 
@@ -184,8 +193,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectvillagehero")) {
 
+                int villageherolvl = getConfig().getInt("heroodthevillageamp");
                 int villageherodelay = getConfig().getInt("heroofthevillagetime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.HERO_OF_THE_VILLAGE, villageherodelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.HERO_OF_THE_VILLAGE, villageherodelay, villageherolvl));
 
 
             }
@@ -196,8 +206,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effecthunger")) {
 
+                int hungerlvl = getConfig().getInt("hungeramp");
                 int hungerdelay = getConfig().getInt("hungertime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER, hungerdelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER, hungerdelay, hungerlvl));
 
             }
 
@@ -207,8 +218,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectinstantdamage")) {
 
+                int instantdamagelvl =getConfig().getInt("instantdamageamp");
                 int instantdamagedelay = getConfig().getInt("instantdamagetime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.HARM, instantdamagedelay,2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.HARM, instantdamagedelay,instantdamagelvl));
 
             }
 
@@ -218,8 +230,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectinstanthealth")) {
 
+                int instanthealthlvl = getConfig().getInt("instanthealthamp");
                 int instanthealthdelay = getConfig().getInt("instanthealthtime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.HEAL, instanthealthdelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.HEAL, instanthealthdelay, instanthealthlvl));
 
             }
 
@@ -229,8 +242,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectinvisibility")) {
 
+                int invisibilitylvl = getConfig().getInt("invisibilityamp");
                 int invisibilitydelay = getConfig().getInt("invisibilitytime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, invisibilitydelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, invisibilitydelay, invisibilitylvl));
 
             }
 
@@ -240,8 +254,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectjumpboost")) {
 
+                int jumpboostlvl = getConfig().getInt("jumpboostamp");
                 int jumpboostdelay = getConfig().getInt("jumpboosttime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, jumpboostdelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, jumpboostdelay, jumpboostlvl));
 
             }
 
@@ -251,8 +266,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectlevitation")) {
 
+                int levitationlvl = getConfig().getInt("levitationamp");
                 int levitationdelay = getConfig().getInt("levitationtime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, levitationdelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, levitationdelay, levitationlvl));
 
             }
 
@@ -262,8 +278,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectluck")) {
 
+                int lucklvl = getConfig().getInt("luckamp");
                 int luckdelay = getConfig().getInt("lucktime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, luckdelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, luckdelay, lucklvl));
 
             }
 
@@ -273,8 +290,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectminingfatigue")) {
 
+                int miningfatiguelvl = getConfig().getInt("miningfatigueamp");
                 int miningfatiguedelay = getConfig().getInt("miningfatiguetime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, miningfatiguedelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, miningfatiguedelay, miningfatiguelvl));
 
             }
 
@@ -284,8 +302,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectnausea")) {
 
+                int nausealvl = getConfig().getInt("nauseaamp");
                 int nauseadelay = getConfig().getInt("nauseatime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, nauseadelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, nauseadelay, nausealvl));
 
             }
 
@@ -295,8 +314,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectnightvision")) {
 
+                int nightvisionlvl = getConfig().getInt("nightvisionamp");
                 int nightvisiondelay = getConfig().getInt("nightvisiontime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, nightvisiondelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, nightvisiondelay, nightvisionlvl));
 
             }
 
@@ -306,8 +326,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectpoison")) {
 
+                int poisonlvl = getConfig().getInt("poisonamp");
                 int poisondelay = getConfig().getInt("poisontime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.POISON, poisondelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.POISON, poisondelay, poisonlvl));
 
             }
 
@@ -317,8 +338,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectregeneration")) {
 
+                int regenerationlvl = getConfig().getInt("regenerationamp");
                 int regenerationdelay = getConfig().getInt("regenerationtime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, regenerationdelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, regenerationdelay, regenerationlvl));
 
             }
 
@@ -328,8 +350,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectresistance")) {
 
+                int resistancelvl = getConfig().getInt("resistanceamp");
                 int resistancedelay = getConfig().getInt("resistancetime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, resistancedelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, resistancedelay, resistancelvl));
 
             }
 
@@ -339,8 +362,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectsaturation")) {
 
+                int saturationlvl = getConfig().getInt("saturationamp");
                 int saturationdelay = getConfig().getInt("saturationtime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, saturationdelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, saturationdelay, saturationlvl));
 
             }
 
@@ -350,8 +374,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.eventslowfalling")) {
 
+                int slowfallinglvl = getConfig().getInt("slowfallingamp");
                 int slowfallingdelay = getConfig().getInt("slowfallingtime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, slowfallingdelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, slowfallingdelay, slowfallinglvl));
 
             }
 
@@ -361,8 +386,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectslowness")) {
 
+                int slownesslvl = getConfig().getInt("slownessamp");
                 int slownessdelay = getConfig().getInt("slownesstime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, slownessdelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, slownessdelay, slownesslvl));
 
             }
 
@@ -372,8 +398,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectspeed")) {
 
+                int speedlvl = getConfig().getInt("speedamp");
                 int speeddelay = getConfig().getInt("speedtime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, speeddelay, 2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, speeddelay, speedlvl));
 
             }
 
@@ -383,8 +410,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectwaterbreathing")) {
 
+                int waterbreathinglvl = getConfig().getInt("waterbreathingamp");
                 int waterbreathingdelay = getConfig().getInt("waterbreathingtime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, waterbreathingdelay,2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, waterbreathingdelay,waterbreathinglvl));
 
             }
 
@@ -394,8 +422,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectweakness")) {
 
+                int weaknesslvl = getConfig().getInt("weaknessamp");
                 int weaknessdelay = getConfig().getInt("weakness");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, weaknessdelay,2));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, weaknessdelay,weaknesslvl));
 
             }
 
@@ -423,7 +452,7 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
                 }else {
 
                     player.sendMessage(ChatColor.BLACK + "--------------------------------------------------");
-                    player.sendMessage(ChatColor.GREEN + "BetterBedTime Plugin By " + ChatColor.YELLOW + "DeadSpark");
+                    player.sendMessage(ChatColor.GREEN + "BetterBedTime Plugin By DeadSpark");
                     player.sendMessage(ChatColor.BLUE + "Check out our GitHub Page");
                     player.sendMessage(ChatColor.GREEN + "https://deadspark.github.io/MysticalCrafts");
                     player.sendMessage(ChatColor.BLUE + "Video Preview");
