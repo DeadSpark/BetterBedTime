@@ -11,24 +11,25 @@ import org.bukkit.event.player.PlayerBedLeaveEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-
 import java.util.Objects;
 
 public final class BetterBedTime extends JavaPlugin implements Listener {
 
+    @Override
     public void onEnable() {
 
         getLogger().info("BetterBedTime Plugin By DeadSpark");
-        getLogger().info("BetterBedTime Plugin version 1.5 has been Enabled");
+        getLogger().info("BetterBedTime Plugin version 1.6 has been Enabled");
         getServer().getPluginManager().registerEvents(this, this);
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
     }
 
+    @Override
     public void onDisable() {
 
-        getLogger().info("BetterBedTime Plugin version 1.5 has been Disabled");
+        getLogger().info("BetterBedTime Plugin version 1.6 has been Disabled");
 
     }
 
@@ -36,6 +37,13 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
     public void OnBedEnter(PlayerBedEnterEvent event) {
 
         Player player = event.getPlayer();
+
+        if (Objects.equals(getConfig().getString("OnePlayerSleep"), true)) {
+
+            event.getPlayer().getWorld().setTime(0L);
+
+        }
+
         if (player.hasPermission("betterbedtime.enterbedmsg")) {
 
             String bedentermsg = Objects.requireNonNull(getConfig().getString("bedentermessage")).replace("{nick}", player.getDisplayName());
@@ -218,9 +226,9 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
             if (player.hasPermission("betterbedtime.effectinstantdamage")) {
 
-                int instantdamagelvl =getConfig().getInt("instantdamageamp");
+                int instantdamagelvl = getConfig().getInt("instantdamageamp");
                 int instantdamagedelay = getConfig().getInt("instantdamagetime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.HARM, instantdamagedelay,instantdamagelvl));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.HARM, instantdamagedelay, instantdamagelvl));
 
             }
 
@@ -412,7 +420,7 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
                 int waterbreathinglvl = getConfig().getInt("waterbreathingamp");
                 int waterbreathingdelay = getConfig().getInt("waterbreathingtime");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, waterbreathingdelay,waterbreathinglvl));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, waterbreathingdelay, waterbreathinglvl));
 
             }
 
@@ -424,7 +432,7 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
                 int weaknesslvl = getConfig().getInt("weaknessamp");
                 int weaknessdelay = getConfig().getInt("weakness");
-                player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, weaknessdelay,weaknesslvl));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, weaknessdelay, weaknesslvl));
 
             }
 
@@ -442,10 +450,14 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
                 Player player = (Player) sender;
                 if (args.length > 0) {
 
-                    if (args[0].equalsIgnoreCase("reload")) {
+                    if (player.hasPermission("betterbedtime.reloadplugin")) {
 
-                        reloadConfig();
-                        player.sendMessage("All config files have been reloaded");
+                        if (args[0].equalsIgnoreCase("reload")) {
+
+                            reloadConfig();
+                            player.sendMessage("All config files have been reloaded");
+
+                        }
 
                     }
 
@@ -478,13 +490,13 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
                 }else {
 
-                    getLogger().info("--------------------------------------------------");
+                    getLogger().info("---------------------------------------------");
                     getLogger().info("BetterBedTime Plugin By DeadSpark");
                     getLogger().info("Check out our GitHub Page");
                     getLogger().info("https://deadspark.github.io/MysticalCrafts");
                     getLogger().info("Video Preview");
                     getLogger().info("https://youtu.be/Wl8mWQsng3M");
-                    getLogger().info("--------------------------------------------------");
+                    getLogger().info("---------------------------------------------");
 
                 }
 
