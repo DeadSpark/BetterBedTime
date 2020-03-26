@@ -1,4 +1,4 @@
-Configuration Version: 1.5
+Configuration Version: 1.6
 
 # Custom Message that will be typed when player goes to bed
 # Supports '&" color codes
@@ -11,6 +11,9 @@ bedentermessage: '&2Hey {nick}, &aAre you going to sleep?'
 # Supports '&" color codes
 bedleavemessage: '&2Hey {nick}, &aDid you sleep well?'
 
+# Enable to turn one player sleep concept
+# Sets the world time to day when just a single player goes to sleep
+OnePlayerSleep: false
 
 # Add custom effects on player Bed Enter/Leave
 # Change the following values to true or false to enable disable
