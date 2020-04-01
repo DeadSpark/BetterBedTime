@@ -1,4 +1,4 @@
-Configuration Version: 1.6
+Configuration Version: 1.7
 
 # Custom Message that will be typed when player goes to bed
 # Supports '&" color codes
@@ -146,7 +146,8 @@ weaknessamp: 2 #Configure the amplifier(level) of the effects
 # • Add custom time for each and every effect - COMPLETED
 # • Add Player display name variables to be used in custom messages eg. {nick} - COMPLETED
 # • Make effects amplifier configurable - COMPLETED
-# • Add one player sleep concept which can be toggled in config.yml
+# • Add one player sleep concept which can be toggled in config.yml - COMPLETED
 
 # Join our Discord server for further updates https://discord.gg/2trEDcM
 # Visit out GitHub page for more info and social links https://deadspark.github.io/MysticalCrafts/
+# Visit out Website https://deadspark143.wixsite.com/mysticalcrafts
