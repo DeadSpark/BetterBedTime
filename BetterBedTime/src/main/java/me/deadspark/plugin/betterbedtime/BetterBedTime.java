@@ -38,7 +38,7 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
 
         Player player = event.getPlayer();
 
-        if (Objects.equals(getConfig().getString("OnePlayerSleep"), true)) {
+        if (Objects.requireNonNull(getConfig().getString("OnePlayerSleep")).equals("true")) {
 
             event.getPlayer().getWorld().setTime(0L);
 
@@ -469,6 +469,8 @@ public final class BetterBedTime extends JavaPlugin implements Listener {
                     player.sendMessage(ChatColor.GREEN + "https://deadspark.github.io/MysticalCrafts");
                     player.sendMessage(ChatColor.BLUE + "Video Preview");
                     player.sendMessage(ChatColor.GREEN + "https://youtu.be/Wl8mWQsng3M");
+                    player.sendMessage(ChatColor.BLUE + "Our Website");
+                    player.sendMessage(ChatColor.GREEN + "https://deadspark143.wixsite.com/mysticalcrafts");
                     player.sendMessage(ChatColor.BLACK + "--------------------------------------------------");
 
                 }
